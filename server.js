@@ -27,16 +27,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-const server = jsonServer.create();
-const router = jsonServer.router(DB_FILE);
-const middlewares = jsonServer.defaults({ static: UPLOAD_DIR });
 
-// Use defaults (logger, static, cors, no-cache)
-server.use(middlewares);
-server.use(jsonServer.bodyParser);
+const express = require("express");
+const server = express();
 
-// Helper: read & write DB (json-server uses lowdb internally, but for some direct writes we use router.db)
-const db = router.db; // lowdb instance
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+
+const adapter = new FileSync(DB_FILE);
+const db = low(adapter);
 
 // Helper: create JWT
 function signToken(payload) {
@@ -713,10 +712,6 @@ server.get("/api/admin/rides", requireAuth, (req, res) => {
 server.get("/api/status", (req, res) => {
   res.json({ status: "OK", time: new Date().toISOString() });
 });
-
-// ------------------ FALLBACK TO json-server router (for resources) ------------------
-// Important: keep custom routes above; then mount router at /api
-server.use("/api", router);
 
 // Start server
 const PORT = process.env.PORT || 3000;
