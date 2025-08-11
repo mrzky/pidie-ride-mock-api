@@ -69,6 +69,21 @@ function getItemOr404(collection, id, res) {
   return item;
 }
 
+// ------------------ API INFO ENDPOINT ------------------
+
+server.get("/", (req, res) => {
+  res.json({ message: "Hello from Express on Vercel" });
+});
+
+// API info endpoint
+server.get("/api", (req, res) => {
+  res.json({
+    name: "Pidie Ride Mock API",
+    version: "1.0.0",
+    date: new Date().toISOString()
+  });
+});
+
 // ------------------ CUSTOM AUTH ENDPOINTS ------------------
 
 // Generic login for customers, drivers, partners, admin
