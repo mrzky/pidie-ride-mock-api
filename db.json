@@ -1,0 +1,22 @@
+{
+  "customers": [
+    { "id": 123, "name": "Budi", "email": "budi@example.com", "password": "P@ssw0rd", "phone": "+628123456789", "photoUrl": null, "createdAt": "2025-08-01T10:00:00Z" }
+  ],
+  "drivers": [
+    { "id": 45, "name": "Andi", "email": "andi@example.com", "password": "driverpass", "phone": "+62811111111", "vehicle": "motorcycle", "plate": "BL1234AB", "status": "available" }
+  ],
+  "partners": [
+    { "id": 10, "name": "Warung Makan", "email": "owner@warung.com", "password": "restopass", "phone": "+6283333333", "address": "Jl. Merdeka 1", "logoUrl": null }
+  ],
+  "menu": [
+    { "id": 101, "partnerId": 10, "name": "Nasi Goreng", "price": 25000, "category": "Makanan", "description": "" },
+    { "id": 102, "partnerId": 10, "name": "Ayam Goreng", "price": 30000, "category": "Makanan", "description": "" }
+  ],
+  "orders": [],
+  "deliveries": [],
+  "rides": [],
+  "notifications": [],
+  "admin": [
+    { "id": 1, "name": "Admin", "email": "admin@example.com", "password": "adminpass" }
+  ]
+}
